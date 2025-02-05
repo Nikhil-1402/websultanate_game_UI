@@ -2,8 +2,8 @@ import React from "react";
 import star from "../assets/star.png";
 import diamond from "../assets/diamond.webp";
 import mine from "../assets/mine.webp";
-import Card from "./Card";
 import { useSelector } from "react-redux";
+import Card from "./Card";
 
 const Game = () => {
   const random = useSelector((state) => state.game.random);

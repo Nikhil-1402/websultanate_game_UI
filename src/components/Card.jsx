@@ -5,12 +5,15 @@ import { resetInitialState } from "../redux/features/game";
 
 const Card = ({ img, value }) => {
   const dispatch = useDispatch();
-  const random = useSelector((state) => state.game.random);
+  const { random, start } = useSelector((state) => state.game);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [show, setShow] = useState(false);
   const handleClick = () => {
-    if (random.length === 25) setShow(true);
+    if (random.length === 25 && start) {
+      setShow(true);
+      openModal();
+    }
   };
 
   const openModal = () => {
@@ -30,6 +33,7 @@ const Card = ({ img, value }) => {
         <button
           onClick={() => {
             dispatch(resetInitialState());
+            setShow(false);
             setIsModalOpen(false);
           }}
           className="w-full text-center py-2.5 bg-linear-to-r from-[#24ee89] to-[#9fe871] !text-black font-bold rounded-lg mb-2 cursor-pointer"
@@ -46,7 +50,6 @@ const Card = ({ img, value }) => {
       <div
         onClick={() => {
           handleClick();
-          openModal();
         }}
         className={`relative cursor-pointer p-1 transition-all ease-linear text-center rounded-lg ${
           show
