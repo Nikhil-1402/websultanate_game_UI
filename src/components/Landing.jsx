@@ -16,7 +16,7 @@ import {
 const Landing = () => {
   return (
     <>
-      <div className="bg-[#323738] rounded-xl overflow-hidden max-w-[1248px] mx-auto relative">
+      <div className="bg-[#323738] rounded-xl overflow-hidden max-w-[1248px] mx-auto relative my-auto">
         <div className="game-container grid lg:grid-cols-9 bg-[#323738]">
           <div className="sidebar lg:order-1 order-2 lg:col-span-3 w-full lg:border-r lg:border-[#3a4142]">
             <Sidebar />

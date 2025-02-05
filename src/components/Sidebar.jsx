@@ -8,7 +8,7 @@ import {
   setStart,
   setRandom,
 } from "../redux/features/game";
-import inr from "../assets/inr.webp"
+import inr from "../assets/inr.webp";
 
 const Sidebar = () => {
   const { gameMode, mines, amount, start } = useSelector((state) => state.game);
@@ -59,10 +59,7 @@ const Sidebar = () => {
             </div>
             <div className="">
               <div className="flex items-center w-full relative mt-2 bg-[#292d2e] rounded-lg px-1 pl-3 h-12 border border-white/10 mb-1.5">
-                <img
-                  src={inr}
-                  className="w-4 h-4 mr-2"
-                />
+                <img src={inr} className="w-4 h-4 mr-2" />
                 <input
                   type="text"
                   name=""
@@ -185,7 +182,7 @@ const Sidebar = () => {
                 </button>
                 <button
                   onClick={() => dispatch(setStart(false))}
-                  className="w-full text-center py-2.5 bg-linear-to-l from-[#fbd765] to-[#ef9e3f] !text-black font-bold rounded-lg mb-2 cursor-pointer"
+                  className="w-full text-center py-2.5 bg-linear-to-l from-[#fbd765] to-[#ef9e3f] !text-black font-bold rounded-lg mb-2 cursor-pointer shadow-[0px_0px_10px_0px_rgba(255,187,0,0.5)]"
                 >
                   Cash Out
                 </button>
@@ -195,7 +192,7 @@ const Sidebar = () => {
                 onClick={() => {
                   handleBetting();
                 }}
-                className="w-full text-center py-2.5 bg-linear-to-r from-[#24ee89] to-[#9fe871] !text-black font-bold rounded-lg mb-2 cursor-pointer"
+                className="w-full text-center py-2.5 bg-linear-to-r from-[#24ee89] to-[#9fe871] !text-black font-bold rounded-lg mb-2 cursor-pointer shadow-[0_0_12px_#23ee884d,0_-2px_#1dca6a_inset]"
               >
                 Bet
               </button>
