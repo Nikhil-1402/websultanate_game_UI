@@ -12,7 +12,7 @@ body {
   height: 100%;
 }
 .game {
-  background: url(https://hash.game/modules/games2/assets/bg-mines-dark-b7d1571a.png);
+  background: url(./assets/bg.png);
   background-position: center;
   background-size: cover;
 }

@@ -8,6 +8,7 @@ import {
   setStart,
   setRandom,
 } from "../redux/features/game";
+import inr from "../assets/inr.webp"
 
 const Sidebar = () => {
   const { gameMode, mines, amount, start } = useSelector((state) => state.game);
@@ -50,17 +51,16 @@ const Sidebar = () => {
             )}
           </button>
         </div>
-        <div className="lg:order-2 order-1 betting-area px-5 py-5 md:block sm:hidden block">
+        <div className="lg:order-2 order-1 betting-area md::px-5 px-2 md:py-5 py-2 md:block sm:hidden block">
           <div className="mb-3">
             <div className="flex items-center justify-between text-sm font-semibold text-white/50">
               <span className="!text-[#b3bec1]">Amount</span>
               <span className="!text-[#b3bec1]">≈0BCD</span>
             </div>
             <div className="">
-              <div className="flex items-center w-full relative mt-2 bg-[#292d2e] rounded-lg px-1 pl-3 h-9 border border-white/10 mb-1.5">
+              <div className="flex items-center w-full relative mt-2 bg-[#292d2e] rounded-lg px-1 pl-3 h-12 border border-white/10 mb-1.5">
                 <img
-                  src="https://hash.game/coin/INR.rect.png"
-                  alt="Currency"
+                  src={inr}
                   className="w-4 h-4 mr-2"
                 />
                 <input
@@ -69,22 +69,22 @@ const Sidebar = () => {
                   value={amount}
                   onChange={(e) => handleAmountChange(e)}
                   disabled={start}
-                  className="z-0 py-1 w-full h-9 font-bold px-1 outline-none border-none disabled:cursor-not-allowed"
+                  className="z-0 py-1 w-full h-12 font-bold px-1 outline-none border-none disabled:cursor-not-allowed"
                 />
                 <div className="flex gap-1">
                   <button
                     disabled={start}
-                    className=" bg-[#3a4142] rounded h-7 px-3 flex items-center justify-center cursor-pointer disabled:cursor-not-allowed disabled:text-white/50"
+                    className=" bg-[#3a4142] rounded h-10 px-3 flex items-center justify-center cursor-pointer disabled:cursor-not-allowed disabled:text-white/50"
                   >
                     1/2
                   </button>
                   <button
                     disabled={start}
-                    className=" bg-[#3a4142] rounded h-7 px-3 flex items-center justify-center cursor-pointer disabled:cursor-not-allowed disabled:text-white/50"
+                    className=" bg-[#3a4142] rounded h-10 px-3 flex items-center justify-center cursor-pointer disabled:cursor-not-allowed disabled:text-white/50"
                   >
                     2×
                   </button>
-                  <div className="flex flex-col items-center bg-[#3a4142] rounded h-7">
+                  <div className="flex flex-col items-center bg-[#3a4142] rounded h-10">
                     <button
                       disabled={start}
                       className="flex w-full h-full items-center justify-center disabled:cursor-not-allowed px-3 disabled:text-white/50"

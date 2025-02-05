@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
+import { debounce } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import SiteWideModal from "./SiteWideModal";
 import { resetInitialState } from "../redux/features/game";
@@ -15,7 +16,6 @@ const Card = ({ img, value }) => {
       openModal();
     }
   };
-
   const openModal = () => {
     setModalContent(
       <div className="">
@@ -76,6 +76,7 @@ const Card = ({ img, value }) => {
         className="hidden modal-trigger-button"
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
+        setShow={setShow}
       >
         {modalContent}
       </SiteWideModal>
