@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  /* color: white; */
+  font-family: "Poppins", serif;
+  font-weight: 700;
+}
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+}
+.game {
+  background: url(https://hash.game/modules/games2/assets/bg-mines-dark-b7d1571a.png);
+  background-position: center;
+  background-size: cover;
+}
+
+/* styles.css */
+
+/* Twinkle animation */
+@keyframes twinkle {
+  0% {
+    transform: scale(0.8);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+/* Twinkle Big animation */
+@keyframes twinkle-big {
+  0% {
+    transform: scale(0.8);
+  }
+  25% {
+    transform: scale(1.8);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+/* Applying animations */
+.animate-twinkle {
+  animation: twinkle 2s infinite;
+}
+
+.animate-twinkle-big {
+  animation: twinkle-big 2s infinite;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 26px;
+  border-radius: 7px;
+  background: white;
+  cursor: pointer;
+  position: relative;
+  top: -2.5px;
+}
+input[type="range"]:disabled::-webkit-slider-thumb {
+  background: #b3bec1;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 26px;
+  background: white;
+  cursor: pointer;
+  top: -2.5px;
+}
