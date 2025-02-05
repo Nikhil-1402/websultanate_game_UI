@@ -2,7 +2,7 @@ import React from "react";
 import star from "../assets/star.png";
 import diamond from "../assets/diamond.webp";
 import mine from "../assets/mine.webp";
-import Card from "./card";
+import Card from "./Card";
 import { useSelector } from "react-redux";
 
 const Game = () => {
