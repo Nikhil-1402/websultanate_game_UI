@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 const Landing = () => {
   return (
     <>
-      <div className="grid lg:grid-cols-9 border border-white/10 bg-[#323738] rounded-xl overflow-hidden">
+      <div className="grid lg:grid-cols-9 bg-[#323738] rounded-xl overflow-hidden max-w-[1248px] mx-auto">
         <div className="sidebar lg:order-1 order-2 lg:col-span-3 w-full">
           <Sidebar />
         </div>

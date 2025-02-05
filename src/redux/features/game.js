@@ -39,7 +39,7 @@ const gameSlice = createSlice({
     },
     resetInitialState: (state) => {
       state.amount = 0;
-      state.gameMode = "Manual";
+      state.gameMode = "manual";
       state.mines = 4;
       state.random = [];
       state.start = false;

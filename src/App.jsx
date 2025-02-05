@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <section className="px-[10%] py-10 min-h-screen bg-[#232626]">
+        <section className="xl:px-[10%] sm:px-10 px-5 sm:py-10 py-7 min-h-screen bg-[#232626]">
           <Landing />
         </section>
       </Provider>

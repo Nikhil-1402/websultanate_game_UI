@@ -23,8 +23,8 @@ const Sidebar = () => {
 
   return (
     <>
-      <section className="text-white">
-        <div className="relative flex items-center w-full bg-layer4 overflow-hidden flex-shrink-0 rounded-none h-12 lg:order-first lg:border-b lg:border-[#3a4142] lg:sticky top-0 lg:rounded-b-none">
+      <section className="text-white flex flex-col">
+        <div className="lg:order-1 order-2 relative flex items-center w-full overflow-hidden flex-shrink-0 rounded-none h-12 lg:border-b lg:border-[#3a4142] lg:sticky top-0 lg:rounded-b-none">
           <button
             onClick={() => dispatch(setGameMode("manual"))}
             disabled={start}
@@ -50,7 +50,7 @@ const Sidebar = () => {
             )}
           </button>
         </div>
-        <div className="betting-area px-5 py-5">
+        <div className="lg:order-2 order-1 betting-area px-5 py-5 md:block sm:hidden block">
           <div className="mb-3">
             <div className="flex items-center justify-between text-sm font-semibold text-white/50">
               <span className="!text-[#b3bec1]">Amount</span>
@@ -200,7 +200,7 @@ const Sidebar = () => {
                 Bet
               </button>
             )}
-            <p className="text-sm bg-[#9fe871]/20 rounded-lg py-1 !text-white/50">
+            <p className="text-sm bg-[#24ee891a] rounded-lg py-1 !text-white/50">
               Betting with $0 will enter demo mode.
             </p>
           </div>
