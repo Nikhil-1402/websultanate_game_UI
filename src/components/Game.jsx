@@ -1,7 +1,13 @@
 import React from "react";
 import star from "../assets/star.png";
+import diamond from "../assets/diamond.webp";
+import mine from "../assets/mine.webp";
+import Card from "./card";
+import { useSelector } from "react-redux";
 
 const Game = () => {
+  const random = useSelector((state) => state.game.random);
+
   return (
     <>
       <section className="w-full h-full py-5 px-3 relative">
@@ -21,12 +27,12 @@ const Game = () => {
             src="https://hash.game/modules/games2/assets/box-bg2-dark-e53f83c0.png"
             alt=""
           />
-          {Array.from({ length: 25 }, (_, index) => (
-            <div
-              key={index}
-              className="relative cursor-pointer p-1 transition-all ease-linear text-center rounded-lg bg-[#E0E5E6] hover:bg-[#4a5354] dark:bg-[#444C4D] dark:hover:bg-[#545F60]"
-            >
-              <div className="pb-[100%]"></div>
+          {(random.length > 0
+            ? random
+            : Array.from({ length: 25 }, () => 1)
+          ).map((value, index) => (
+            <div key={index}>
+              <Card img={value === 2 ? mine : diamond} value={value} />
             </div>
           ))}
         </div>

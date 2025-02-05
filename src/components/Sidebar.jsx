@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setGameMode,
+  setMines,
+  setAmount,
+  setStart,
+  setRandom,
+} from "../redux/features/game";
 
 const Sidebar = () => {
-  const [gameMode, setGameMode] = useState("Manual");
-  const [mines, setMines] = useState(4);
-  const [amount, setAmount] = useState(0);
-  const [start, setStart] = useState(false);
-
+  const { gameMode, mines, amount, start } = useSelector((state) => state.game);
+  const dispatch = useDispatch();
   const handleAmountChange = (e) => {
-    setAmount(e.target.value);
+    dispatch(setAmount(e.target.value));
   };
 
-  const startGame = () => {
-    setStart(true);
+  const handleBetting = () => {
+    dispatch(setStart(true));
+    dispatch(setRandom());
   };
 
   return (
@@ -20,26 +26,26 @@ const Sidebar = () => {
       <section className="text-white">
         <div className="relative flex items-center w-full bg-layer4 overflow-hidden flex-shrink-0 rounded-none h-12 lg:order-first lg:border-b lg:border-[#3a4142] lg:sticky top-0 lg:rounded-b-none">
           <button
-            onClick={() => setGameMode("Manual")}
+            onClick={() => dispatch(setGameMode("manual"))}
             disabled={start}
             className={`h-full flex-1 px-4 py-2 relative font-medium ease-in-out transition-all duration-150 cursor-pointer disabled:opacity-50 ${
-              gameMode === "Manual" ? "opacity-100" : "opacity-50"
+              gameMode === "manual" ? "opacity-100" : "opacity-50"
             }`}
           >
             Manual
-            {gameMode === "Manual" && (
+            {gameMode === "manual" && (
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#24ee89] to-[#9fe871]"></span>
             )}
           </button>
           <button
-            onClick={() => setGameMode("Auto")}
+            onClick={() => dispatch(setGameMode("auto"))}
             disabled={start}
             className={`h-full flex-1 px-4 py-2 relative font-medium ease-in-out transition-all duration-150 cursor-pointer disabled:opacity-50 ${
-              gameMode === "Auto" ? "opacity-100" : "opacity-50"
+              gameMode === "auto" ? "opacity-100" : "opacity-50"
             }`}
           >
             Auto
-            {gameMode === "Auto" && (
+            {gameMode === "auto" && (
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#24ee89] to-[#9fe871]"></span>
             )}
           </button>
@@ -63,7 +69,7 @@ const Sidebar = () => {
                   value={amount}
                   onChange={(e) => handleAmountChange(e)}
                   disabled={start}
-                  className="z-0 py-1 w-full h-9 font-bold px-1 outline-none border-none"
+                  className="z-0 py-1 w-full h-9 font-bold px-1 outline-none border-none disabled:cursor-not-allowed"
                 />
                 <div className="flex gap-1">
                   <button
@@ -148,9 +154,9 @@ const Sidebar = () => {
                     min="1"
                     max="24"
                     value={mines}
-                    onChange={(e) => setMines(Number(e.target.value))}
+                    onChange={(e) => dispatch(setMines(Number(e.target.value)))}
                     disabled={start}
-                    className="w-full h-2 bg-transparent appearance-none cursor-pointer"
+                    className="w-full h-2 bg-transparent appearance-none cursor-pointer disabled:cursor-not-allowed"
                     style={{
                       WebkitAppearance: "none",
                     }}
@@ -172,13 +178,13 @@ const Sidebar = () => {
             {start ? (
               <>
                 <button
-                  onClick={() => setStart(false)}
+                  onClick={() => dispatch(setStart(false))}
                   className="bg-[#3a4142] w-full text-center py-2.5 font-bold rounded-lg mb-2 cursor-pointer"
                 >
                   Pick a tile randomly
                 </button>
                 <button
-                  onClick={() => setStart(false)}
+                  onClick={() => dispatch(setStart(false))}
                   className="w-full text-center py-2.5 bg-linear-to-l from-[#fbd765] to-[#ef9e3f] !text-black font-bold rounded-lg mb-2 cursor-pointer"
                 >
                   Cash Out
@@ -187,7 +193,7 @@ const Sidebar = () => {
             ) : (
               <button
                 onClick={() => {
-                  startGame();
+                  handleBetting();
                 }}
                 className="w-full text-center py-2.5 bg-linear-to-r from-[#24ee89] to-[#9fe871] !text-black font-bold rounded-lg mb-2 cursor-pointer"
               >
