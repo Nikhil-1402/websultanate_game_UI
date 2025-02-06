@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import star from "../assets/star.png";
 import diamond from "../assets/diamond.webp";
 import mine from "../assets/mine.webp";
@@ -6,15 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import inr from "../assets/inr.webp";
 import {
+  resetInitialState,
   setAmount,
   setMines,
   setRandom,
   setStart,
 } from "../redux/features/game";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import SiteWideModal from "./SiteWideModal";
 
 const Game = () => {
   const { random, mines, amount, start } = useSelector((state) => state.game);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
   const dispatch = useDispatch();
   const handleAmountChange = (e) => {
     dispatch(setAmount(e.target.value));
@@ -23,6 +27,31 @@ const Game = () => {
   const handleBetting = () => {
     dispatch(setStart(true));
     dispatch(setRandom());
+  };
+
+  const handleCashOut = () => {
+    dispatch(setStart(false));
+    openModal();
+  };
+
+  const openModal = () => {
+    setModalContent(
+      <div className="">
+        <h1 className="text-2xl mb-3 text-center">Congratulations</h1>
+        <p className="!font-medium mb-2 text-center">You Won!!</p>
+        <button
+          onClick={() => {
+            dispatch(resetInitialState());
+            // setShow(false);
+            setIsModalOpen(false);
+          }}
+          className="w-full text-center py-2.5 bg-linear-to-r from-[#24ee89] to-[#9fe871] !text-black font-bold rounded-lg mb-2 cursor-pointer"
+        >
+          New Match
+        </button>
+      </div>
+    );
+    setIsModalOpen(true);
   };
 
   return (
@@ -157,7 +186,7 @@ const Game = () => {
                   Pick a tile randomly
                 </button>
                 <button
-                  onClick={() => dispatch(setStart(false))}
+                  onClick={() => handleCashOut()}
                   className="w-full text-center py-2.5 bg-linear-to-l from-[#fbd765] to-[#ef9e3f] !text-black font-bold rounded-lg mb-2 cursor-pointer shadow-[0px_0px_10px_0px_rgba(255,187,0,0.5)]"
                 >
                   Cash Out
@@ -196,6 +225,15 @@ const Game = () => {
             src={star}
           />
         </div>
+        <SiteWideModal
+          buttonText="Trigger Modal"
+          className="hidden modal-trigger-button"
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
+          // setShow={setShow}
+        >
+          {modalContent}
+        </SiteWideModal>
       </section>
     </>
   );

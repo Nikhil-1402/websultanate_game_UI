@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from "react";
-import { debounce } from "lodash";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SiteWideModal from "./SiteWideModal";
 import { resetInitialState } from "../redux/features/game";
@@ -17,6 +16,7 @@ const Card = ({ img, value }) => {
     }
   };
   const openModal = () => {
+    if (value === 1) return;
     setModalContent(
       <div className="">
         {value === 1 ? (
@@ -44,6 +44,10 @@ const Card = ({ img, value }) => {
     );
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    setShow(false);
+  }, [random]);
 
   return (
     <>
@@ -76,7 +80,6 @@ const Card = ({ img, value }) => {
         className="hidden modal-trigger-button"
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
-        setShow={setShow}
       >
         {modalContent}
       </SiteWideModal>

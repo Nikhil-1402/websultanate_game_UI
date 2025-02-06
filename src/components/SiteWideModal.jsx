@@ -2,13 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { resetInitialState } from "../redux/features/game";
 
-const SiteWideModal = ({
-  isOpen,
-  setIsOpen,
-  children,
-  className = "",
-  setShow,
-}) => {
+const SiteWideModal = ({ isOpen, setIsOpen, children, className = "" }) => {
   const dispatch = useDispatch();
   const modalRef = useRef(null);
 
@@ -30,7 +24,6 @@ const SiteWideModal = ({
 
   const closeModal = () => {
     setIsOpen(false);
-    setShow(false);
     dispatch(resetInitialState());
   };
 
